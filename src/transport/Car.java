@@ -1,12 +1,7 @@
 package transport;
 
-public class Car {
-    private final String brand;
-    private final String model;
+public class Car extends Transport {
     private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
     private String transmission;
     private final String bodyType;
     private int registrationNumber;
@@ -20,47 +15,22 @@ public class Car {
      * Если передана пустая строка или null, то цвет кузова по умолчанию — белый.
      * Если год производства ≤0, то значение по умолчанию — 2000.
      */
+
     public Car(String brand,
                String model,
-               double engineVolume,
-               String color,
                int year,
                String country,
+               String color,
+               int maxSpeed,
+               double engineVolume,
                String transmission,
                String bodyType,
                int registrationNumber,
                int numberOfSeats,
                boolean summerTires,
                Key key) {
-
-        if (brand == null || brand.isEmpty()) {
-            this.brand = "default";
-        } else {
-            this.brand = brand;
-        }
-
-        if (model == null || model.isEmpty()) {
-            this.model = "default";
-        } else {
-            this.model = model;
-        }
-
-        if (country == null || country.isEmpty()) {
-            this.country = "default";
-        } else {
-            this.country = country;
-        }
-
+        super(brand, model, year, country, color, maxSpeed);
         setEngineVolume(engineVolume);
-
-        setColor(color);
-
-        if (year <= 0) {
-            this.year = 2000;
-        } else {
-            this.year = year;
-        }
-
         setTransmission(transmission);
 
         if (bodyType == null || bodyType.isEmpty()) {
@@ -68,7 +38,6 @@ public class Car {
         } else {
             this.bodyType = model;
         }
-
         setRegistrationNumber(registrationNumber);
 
         if (numberOfSeats <= 0) {
@@ -81,28 +50,8 @@ public class Car {
         setKey(key);
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
     public double getEngineVolume() {
         return engineVolume;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getCountry() {
-        return country;
     }
 
     public String getTransmission() {
@@ -130,14 +79,6 @@ public class Car {
             this.engineVolume = 1.5;
         } else {
             this.engineVolume = engineVolume;
-        }
-    }
-
-    public void setColor(String color) {
-        if (color == null || color.isEmpty()) {
-            this.color = "white";
-        } else {
-            this.color = color;
         }
     }
 
@@ -172,31 +113,29 @@ public class Car {
         this.key = key;
     }
 
+    @Override
+    public String toString() {
+        return "Car{" +
+                "engineVolume=" + engineVolume  +
+                ", transmission='" + transmission + '\'' +
+                ", bodyType='" + bodyType + '\'' +
+                ", registrationNumber=" + registrationNumber +
+                ", numberOfSeats=" + numberOfSeats + '\'' +
+                 (summerTires ? " летняя, " : " зимняя, ") +
+                ", key=" + key +
+                "} " + super.toString();
+    }
+
     public void changeTiresToSeasonal(int month) {
         if (month >= 4 && month <= 10) {
             summerTires = true;
         } else {
             summerTires = false;
         }
+
     }
 
-    @Override
-    public String toString() {
-        return "Car{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                ", color='" + color + '\'' +
-                ", year=" + year +
-                ", country='" + country + '\'' +
-                ", transmission='" + transmission + '\'' +
-                ", bodyType='" + bodyType + '\'' +
-                ", registrationNumber=" + registrationNumber +
-                ", numberOfSeats=" + numberOfSeats +
-                ", tires = " + (summerTires ? " летняя, " : " зимняя, ") +
-                key +
-                '}';
-    }
+
 
     public static class Key {
         private final boolean remoteEngineStarYes;

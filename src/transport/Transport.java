@@ -1,16 +1,16 @@
 package transport;
 
 public class Transport {
-    private String brand;
-    private String model;
+    private final String brand;
+    private final String model;
     private final int year;
     private final String country;
     private String color;
     private int maxSpeed;
 
     public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
-        this.brand = setBrand(brand);
-        this.model = setModel(model);
+        this.brand = brand;
+        this.model = model;
         this.year = year;
         this.country = country;
         this.color = setColor(color);
@@ -28,25 +28,7 @@ public class Transport {
         return brand;
     }
 
-    public String setBrand(String brand) {
-        if (brand == null || brand.isEmpty()) {
-            System.out.println("Неккоректный ввод");
-        } else {
-            this.brand = brand;
-        }
-        return brand;
-    }
-
     public String getModel() {
-        return model;
-    }
-
-    public String setModel(String model) {
-        if (model == null || model.isEmpty()) {
-            System.out.println("Неккоректный в");
-        } else {
-            this.model = model;
-        }
         return model;
     }
 
@@ -77,7 +59,7 @@ public class Transport {
 
     public int setMaxSpeed(int maxSpeed) {
         if (maxSpeed <= 0 ) {
-            System.out.println("Неккоректный ввод");
+            maxSpeed = 120;
         } else {
             this.maxSpeed = maxSpeed;
         }
@@ -86,13 +68,11 @@ public class Transport {
 
     @Override
     public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                ", country='" + country + '\'' +
-                ", color='" + color + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                '}';
+        return  "Brand: " + brand +
+                ", модель: " + model +
+                ", год выпуска: " + year +
+                ", страна: " + country +
+                ", цвет машины: " + color +
+                ", максимальная скорость: " + maxSpeed;
     }
 }

@@ -115,15 +115,14 @@ public class Car extends Transport {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "engineVolume=" + engineVolume  +
-                ", transmission='" + transmission + '\'' +
-                ", bodyType='" + bodyType + '\'' +
-                ", registrationNumber=" + registrationNumber +
-                ", numberOfSeats=" + numberOfSeats + '\'' +
-                 (summerTires ? " летняя, " : " зимняя, ") +
-                ", key=" + key +
-                "} " + super.toString();
+        return   super.toString() +
+                ", объем двигателя: " + engineVolume  +
+                ", коробка передач: " + transmission +
+                ", тип кузова: " + bodyType +
+                ", регистрационный номер: " + registrationNumber +
+                ", количество мест: " + numberOfSeats +
+                 (summerTires ? " летняя резина, " : " зимняя резина, ") +
+                 key;
     }
 
     public void changeTiresToSeasonal(int month) {
@@ -134,8 +133,6 @@ public class Car extends Transport {
         }
 
     }
-
-
 
     public static class Key {
         private final boolean remoteEngineStarYes;
@@ -156,8 +153,8 @@ public class Car extends Transport {
 
         @Override
         public String toString() {
-            return (remoteEngineStarYes?" Удаленный запуск двигателя есть":" Удаленного запуска двигателя нет") +
-                    (keylessEntryYes?" Бесключевой доступ есть ":" Бесключевого доступа нет");
+            return (remoteEngineStarYes?" удаленный запуск двигателя есть, ":" удаленного запуска двигателя нет, ") +
+                    (keylessEntryYes?" бесключевой доступ есть ":" бесключевого доступа нет");
         }
     }
 }

@@ -19,7 +19,7 @@ public class CarTest {
                 150,
                 1.6,
                 "МКПП",
-                "",
+                "седан",
                 25,
                 4,
                 true,
@@ -30,7 +30,7 @@ public class CarTest {
         Bus bus = new Bus("УАЗ","Газель",2020,"Russia","red", 120);
         System.out.println(bus);
 
-        Transport bus2 = new Bus("mersedes", "Benz", 2021,"Germany", "black", 160);
+        Transport bus2 = new Bus("Mersedes", "Benz", 2021,"Germany", "black", 160);
         System.out.println(bus2);
 
 

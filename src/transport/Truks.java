@@ -1,24 +1,24 @@
 package transport;
 
-public class Bus extends Transport implements Competing{
+public class Truks extends Transport implements Competing{
 
-    public Bus(String brand, String model, double engineCapacity) {
+    public Truks(String brand, String model,  double engineCapacity) {
         super(brand, model, engineCapacity);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return  super.toString();
     }
 
     @Override
     public void startMoving(){
-        System.out.println("Автобус начал движение");
+        System.out.println("Грузовой автомобиль начал движение");
     }
 
     @Override
     public void finishMoving(){
-        System.out.println("Автобус остановился");
+        System.out.println("Грузовой автомобиль остановился");
     }
 
     @Override

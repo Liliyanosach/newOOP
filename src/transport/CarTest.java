@@ -9,29 +9,22 @@ public class CarTest {
          *Kia Sportage 4-го поколения, 2018 год выпуска, сборка в Южной Корее, цвет кузова — красный, объем двигателя — 2,4 л.
          *Hyundai Avante, сборка в Южной Корее, цвет кузова — оранжевый, объем двигателя — 1,6 л, год выпуска — 2016 год.
          */
+        Car car1 = new Car("Lada","Granta", 1.7);
+        Car car2 = new Car("Audi", "A8", 3.0);
+        Car car3 = new Car("BMW", "Z8", 3);
+        Car car4 = new Car("Kia", "Sportage", 2.4);
+
+        Bus bus1 = new Bus("Mersedes","B151", 5);
+        Bus bus2 = new Bus("Scania", "E360", 5.5);
+        Bus bus3 = new Bus("Lias", "R10", 4.8);
+        Bus bus4 = new Bus("Reno", "Sts", 5.2);
+
+        Truks truks1 = new Truks("Ford", "Bronkas", 3.8);
+        Truks truks2 = new Truks("Dodge", "Ram", 4.5);
+        Truks truks3 = new Truks("Ford", "Raptor", 5);
+        Truks truks4 = new Truks("JMS", "North", 3.5);
 
 
-        Car car = new Car("Lada",
-                "Granta",
-                2020,
-                "Russia",
-                "red",
-                150,
-                1.6,
-                "МКПП",
-                "седан",
-                25,
-                4,
-                true,
-                new Car.Key(true,true)
-                );
-        System.out.println(car);
-
-        Bus bus = new Bus("УАЗ","Газель",2020,"Russia","red", 120);
-        System.out.println(bus);
-
-        Transport bus2 = new Bus("Mersedes", "Benz", 2021,"Germany", "black", 160);
-        System.out.println(bus2);
 
 
 

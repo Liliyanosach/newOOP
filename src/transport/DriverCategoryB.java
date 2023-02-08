@@ -6,5 +6,15 @@ public class DriverCategoryB extends Driver{
     }
 
     @Override
-    public void startMoving(){}
+    public void startMoving(){
+        System.out.println("Завести легковой автомобиль");
+    }
+    @Override
+    public void stop(){
+        System.out.println("Остановить легковой автомобиль");
+    }
+    @Override
+    public void refuelTheCar(){
+        System.out.println("Заправить легковой автомобиль");
+    }
 }

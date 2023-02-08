@@ -46,7 +46,10 @@ public abstract class Driver {
     public void startMoving(){
     }
 
-
+    public void stop(){
+    }
+    public void refuelTheCar(){
+    }
 
 
 }

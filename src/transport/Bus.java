@@ -1,9 +1,9 @@
 package transport;
 
-public class Bus extends Transport implements Competing{
+public class Bus extends Transport<DriverCategoryD> {
 
-    public Bus(String brand, String model, double engineCapacity) {
-        super(brand, model, engineCapacity);
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver) {
+        super(brand, model, engineCapacity, driver);
     }
 
     @Override
@@ -13,17 +13,17 @@ public class Bus extends Transport implements Competing{
 
     @Override
     public void startMoving(){
-        System.out.println("Автобус начал движение");
+        System.out.println("Автобус марки " + getBrand() + "начал движение");
     }
 
     @Override
     public void finishMoving(){
-        System.out.println("Автобус остановился");
+        System.out.println("Автобус марки " + getBrand() + "остановился");
     }
 
     @Override
     public void pitStop() {
-        System.out.println("Пит стоп");
+        System.out.println("Пит стоп автобуса " + getBrand() + " " + getModel());
     }
 
     @Override
@@ -33,6 +33,6 @@ public class Bus extends Transport implements Competing{
 
     @Override
     public void maxSpeed() {
-        System.out.println("Максимальная скорость ");
+        System.out.println("Максимальная скорость автобуса " + getBrand() + " " + getModel());
     }
 }

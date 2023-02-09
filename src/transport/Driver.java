@@ -38,18 +38,14 @@ public abstract class Driver {
     @Override
     public String toString() {
         return "Водитель: " +
-                " Ф.И.О " + fullName  +
-                (driverLicense? ", водительсие права есть, " : ", водительских прав нет, ")
-                + ", стаж " + experience;
+                " Ф.И.О " + getFullName() +
+                (isDriverLicense()? ", водительсие права есть, " : ", водительских прав нет, ")
+                + ", стаж " + getExperience();
     }
 
-    public void startMoving(){
-    }
-
-    public void stop(){
-    }
-    public void refuelTheCar(){
-    }
+    public abstract void startMoving();
+    public abstract void stop();
+    public abstract void refuelTheCar();
 
 
 }

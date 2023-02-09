@@ -1,29 +1,29 @@
 package transport;
 
-public class Truks extends Transport implements Competing{
+public class Truks extends Transport<DriverCategoryC> {
 
-    public Truks(String brand, String model,  double engineCapacity) {
-        super(brand, model, engineCapacity);
+    public Truks(String brand, String model, double engineCapacity, DriverCategoryC driver) {
+        super(brand, model, engineCapacity, driver);
     }
 
     @Override
     public String toString() {
-        return  super.toString();
+        return super.toString();
     }
 
     @Override
     public void startMoving(){
-        System.out.println("Грузовой автомобиль начал движение");
+        System.out.println("Грузовой автомобиль марки " + getBrand() + "начал движение");
     }
 
     @Override
     public void finishMoving(){
-        System.out.println("Грузовой автомобиль остановился");
+        System.out.println("Грузовой автомобиль марки " + getBrand() + "остановился");
     }
 
     @Override
     public void pitStop() {
-        System.out.println("Пит стоп");
+        System.out.println("Пит стоп грузового автомобиля "+ getBrand() + " " + getModel());
     }
 
     @Override
@@ -33,6 +33,6 @@ public class Truks extends Transport implements Competing{
 
     @Override
     public void maxSpeed() {
-        System.out.println("Максимальная скорость ");
+        System.out.println("Максимальная скорость грузового автомобиля "+ getBrand() + " " + getModel());
     }
 }

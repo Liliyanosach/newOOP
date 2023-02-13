@@ -51,4 +51,6 @@ abstract class Transport <T extends Driver> implements Competing {
         System.out.println("Водитель " + getDriver() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
     }
 
+    public abstract void getType();
+
 }

@@ -2,14 +2,39 @@ package transport;
 
 public class Car extends Transport <DriverCategoryB> {
 
+    private final BodyType bodyType;
 
-    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver) {
+    enum BodyType{
+        SEDAN("Sedan"),
+        HATCHBACK("Hatchback"),
+        COUPE("Coupe"),
+        UNIVERSAL("Universal"),
+        SUV("SUV"),
+        CROSSOVER("Crossover"),
+        PICKUP("Pickup"),
+        VAN("Van"),
+        MINIVAN("Minivan");
+
+        private final String bodyType;
+
+        BodyType(String bodyType) {
+            this.bodyType = bodyType;
+        }
+
+        public String getBodyType(){
+            return bodyType;
+        }
+
+    }
+
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver,BodyType bodyType) {
         super(brand, model, engineCapacity, driver);
+        this.bodyType = bodyType;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Тип кузова: " + bodyType + " " + super.toString();
     }
 
     @Override
@@ -20,6 +45,11 @@ public class Car extends Transport <DriverCategoryB> {
     @Override
     public void finishMoving(){
         System.out.println("Легковой автомобиль марки " + getBrand() + "остановился");
+    }
+
+    @Override
+    public void getType() {
+
     }
 
     @Override

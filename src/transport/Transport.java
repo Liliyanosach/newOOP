@@ -1,28 +1,25 @@
 package transport;
 
-public class Transport {
+abstract class Transport <T extends Driver> implements Competing {
     private final String brand;
     private final String model;
-    private final int year;
-    private final String country;
-    private String color;
-    private int maxSpeed;
+    private double engineCapacity;
+    private T driver;
 
-    public Transport(String brand, String model, int year, String country, String color, int maxSpeed) {
+    public Transport(String brand, String model,double engineCapacity,T driver) {
         this.brand = brand;
         this.model = model;
-        this.year = year;
-        this.country = country;
-        this.color = setColor(color);
-        this.maxSpeed = setMaxSpeed(maxSpeed);
+        this.engineCapacity = engineCapacity;
+        this.driver = driver;
     }
 
-    /*
-     * Создайте геттеры и сеттеры для необходимых полей. Параметры «Год выпуска», «Страна производства» не могут изменяться.
-     * Параметры «Цвет» и «Скорость» изменяться могут.
-     * Для изменяемых параметров добавьте проверку данных: значение должно быть указано корректно, не должно содержать null
-     * и не может быть пустым.
-     */
+    public T getDriver() {
+        return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
 
     public String getBrand() {
         return brand;
@@ -32,47 +29,26 @@ public class Transport {
         return model;
     }
 
-    public int getYear() {
-        return year;
+    public double getEngineCapacity() {
+        return engineCapacity;
     }
 
-    public String getCountry() {
-        return country;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public String setColor(String color) {
-        if (color == null || color.isEmpty()) {
-            System.out.println("Неккоректный ввод");
-        } else {
-            this.color = color;
-        }
-        return color;
-    }
-
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public int setMaxSpeed(int maxSpeed) {
-        if (maxSpeed <= 0 ) {
-            maxSpeed = 120;
-        } else {
-            this.maxSpeed = maxSpeed;
-        }
-        return maxSpeed;
+    public void setEngineCapacity(double engineCapacity) {
+        this.engineCapacity = engineCapacity;
     }
 
     @Override
     public String toString() {
-        return  "Brand: " + brand +
+        return "Brand: " + brand +
                 ", модель: " + model +
-                ", год выпуска: " + year +
-                ", страна: " + country +
-                ", цвет машины: " + color +
-                ", максимальная скорость: " + maxSpeed;
+                ", объем двигателя: " + engineCapacity +
+                ", Водитель " + driver;
     }
+
+    public abstract void startMoving();
+    public abstract  void finishMoving();
+    public void printInfo(){
+        System.out.println("Водитель " + getDriver() + " управляет автомобилем " + getBrand() + " и будет участвовать в заезде");
+    }
+
 }

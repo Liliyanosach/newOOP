@@ -1,138 +1,42 @@
 package transport;
 
-public class Car extends Transport {
-    private double engineVolume;
-    private String transmission;
-    private final String bodyType;
-    private int registrationNumber;
-    private final int numberOfSeats;
-    private boolean summerTires;
-    private Key key;
+public class Car extends Transport <DriverCategoryB> {
 
 
-    /* Если передана пустая строка или null в поля модель, марка машины и страна сборки, то значение по умолчанию — default.
-     * Если переданный объем двигателя ≤=0, то значение по умолчанию — 1,5 л.
-     * Если передана пустая строка или null, то цвет кузова по умолчанию — белый.
-     * Если год производства ≤0, то значение по умолчанию — 2000.
-     */
-
-    public Car(String brand,
-               String model,
-               int year,
-               String country,
-               String color,
-               int maxSpeed,
-               double engineVolume,
-               String transmission,
-               String bodyType,
-               int registrationNumber,
-               int numberOfSeats,
-               boolean summerTires,
-               Key key) {
-        super(brand, model, year, country, color, maxSpeed);
-        setEngineVolume(engineVolume);
-        setTransmission(transmission);
-
-        if (bodyType == null || bodyType.isEmpty()) {
-            this.bodyType = "default";
-        } else {
-            this.bodyType = model;
-        }
-        setRegistrationNumber(registrationNumber);
-
-        if (numberOfSeats <= 0) {
-            this.numberOfSeats = 2;
-        } else {
-            this.numberOfSeats = numberOfSeats;
-        }
-
-        this.summerTires = summerTires;
-        setKey(key);
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public String getTransmission() {
-        return transmission;
-    }
-
-    public String getBodyType() {
-        return bodyType;
-    }
-
-    public int getRegistrationNumber() {
-        return registrationNumber;
-    }
-
-    public int getNumberOfSeats() {
-        return numberOfSeats;
-    }
-
-    public boolean getTires() {
-        return summerTires;
-    }
-
-    public void setEngineVolume(double engineVolume) {
-        if (engineVolume <= 0) {
-            this.engineVolume = 1.5;
-        } else {
-            this.engineVolume = engineVolume;
-        }
-    }
-
-    public void setTransmission(String transmission) {
-        if (transmission == null || transmission.isEmpty()) {
-            this.transmission = "default";
-        } else {
-            this.transmission = transmission;
-        }
-    }
-
-    public void setRegistrationNumber(int registrationNumber) {
-        if (registrationNumber <= 0) {
-            this.registrationNumber = 1;
-        } else {
-            this.registrationNumber = registrationNumber;
-        }
-    }
-
-    public void setSummerTires(boolean summerTires) {
-        this.summerTires = summerTires;
-    }
-
-    public Key getKey() {
-        return key;
-    }
-
-    public void setKey(Key key) {
-        if(key == null){
-            key = new Key(false,false);
-        }
-        this.key = key;
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver) {
+        super(brand, model, engineCapacity, driver);
     }
 
     @Override
     public String toString() {
-        return   super.toString() +
-                ", объем двигателя: " + engineVolume  +
-                ", коробка передач: " + transmission +
-                ", тип кузова: " + bodyType +
-                ", регистрационный номер: " + registrationNumber +
-                ", количество мест: " + numberOfSeats +
-                 (summerTires ? " летняя резина, " : " зимняя резина, ") +
-                 key;
+        return super.toString();
     }
 
-    public void changeTiresToSeasonal(int month) {
-        if (month >= 4 && month <= 10) {
-            summerTires = true;
-        } else {
-            summerTires = false;
-        }
-
+    @Override
+    public void startMoving(){
+        System.out.println("Легковой автомобиль марки " + getBrand() + "начал движение");
     }
+
+    @Override
+    public void finishMoving(){
+        System.out.println("Легковой автомобиль марки " + getBrand() + "остановился");
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Пит стоп автомобиля "+ getBrand() + " " + getModel());
+    }
+
+    @Override
+    public void bestLapTime() {
+        System.out.println("Лучшее время круга: " + getBrand() + " " + getModel());
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Максимальная скорость автомобиля "+ getBrand() + " " + getModel());
+    }
+
 
     public static class Key {
         private final boolean remoteEngineStarYes;

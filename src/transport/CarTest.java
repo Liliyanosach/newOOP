@@ -22,7 +22,9 @@ public class CarTest {
             System.out.println(transport);
         }
 
-
+        for (Transport<?> transport : transports) {
+            printInfo(transport);
+        }
 
     }
 

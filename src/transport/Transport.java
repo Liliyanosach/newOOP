@@ -1,6 +1,6 @@
 package transport;
 
-abstract class Transport <T extends Driver> implements Competable {
+abstract class Transport <T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineCapacity;

@@ -1,8 +1,8 @@
 package transport;
 
-public class Truks extends Transport<DriverCategoryC> {
+public class Trucks extends Transport<DriverCategoryC> {
 
-    LoadCapacity loadCapacity;
+    private final LoadCapacity loadCapacity;
 
     enum LoadCapacity {
         N1(null,3.5F),
@@ -33,14 +33,18 @@ public class Truks extends Transport<DriverCategoryC> {
         }
     }
 
-    public Truks(String brand, String model, double engineCapacity, DriverCategoryC driver, LoadCapacity loadCapacity) {
-        super(brand, model, engineCapacity, driver);
+    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, LoadCapacity loadCapacity, Type type) {
+        super(brand, model, engineCapacity, driver, type);
         this.loadCapacity = loadCapacity;
+    }
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
     }
 
     @Override
     public String toString() {
-        return  loadCapacity +
+        return loadCapacity +
                 " " + super.toString();
     }
 
@@ -55,8 +59,17 @@ public class Truks extends Transport<DriverCategoryC> {
     }
 
     @Override
-    public void getType() {
+    public Type getType() {
+        return Type.TRUCK;
+    }
 
+    @Override
+    public void printType() {
+        if (loadCapacity != null) {
+            System.out.println(loadCapacity);
+        } else {
+            System.out.println("Данных по транспортному средству недостаточно");
+        }
     }
 
     @Override

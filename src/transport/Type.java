@@ -1,5 +1,6 @@
 package transport;
 
 public enum Type {
-    CAR, BUS, TRACK;
+    CAR, BUS, TRUCK;
+
 }

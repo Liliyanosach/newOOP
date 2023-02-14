@@ -30,14 +30,18 @@ public class Bus extends Transport<DriverCategoryD> {
         @Override
         public String toString() {
             return "Вместимость: " +
-                    (getLowerLimitsOfCapacity() == null ? "" : " от " + getLowerLimitsOfCapacity() + "") +
+                    (getLowerLimitsOfCapacity() == null ? "" : "от " + getLowerLimitsOfCapacity() + "") +
                     (getUpperLimitsOfCapacity() == null ? "" : " до " + getUpperLimitsOfCapacity() + "");
         }
     }
 
-    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, CapacityType capacityType) {
-        super(brand, model, engineCapacity, driver);
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, CapacityType capacityType, Type type) {
+        super(brand, model, engineCapacity, driver, type);
         this.capacityType = capacityType;
+    }
+
+    public CapacityType getCapacityType() {
+        return capacityType;
     }
 
     @Override
@@ -57,8 +61,17 @@ public class Bus extends Transport<DriverCategoryD> {
     }
 
     @Override
-    public void getType() {
+    public Type getType() {
+        return Type.BUS;
+    }
 
+    @Override
+    public void printType() {
+            if (capacityType != null) {
+                System.out.println("Автобус: " + capacityType);
+            } else {
+                System.out.println("Данных по транспортному средству недостаточно");
+            }
     }
 
     @Override

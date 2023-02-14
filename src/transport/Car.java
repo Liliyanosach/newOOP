@@ -27,8 +27,8 @@ public class Car extends Transport <DriverCategoryB> {
 
     }
 
-    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver,BodyType bodyType) {
-        super(brand, model, engineCapacity, driver);
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver,BodyType bodyType, Type type) {
+        super(brand, model, engineCapacity, driver, type);
         this.bodyType = bodyType;
     }
 
@@ -48,8 +48,13 @@ public class Car extends Transport <DriverCategoryB> {
     }
 
     @Override
-    public void getType() {
+    public Type getType() {
+        return Type.CAR;
+    }
 
+    @Override
+    public void printType() {
+        System.out.println("Тип автомобиля " + (this.bodyType != null ? this.bodyType.toString() : " Данных по транспортному средству недостаточно"));
     }
 
     @Override

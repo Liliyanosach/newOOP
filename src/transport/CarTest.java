@@ -31,9 +31,15 @@ public class CarTest {
         Car carTest = new Car("Lada", "Granta", 1.7,new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SEDAN, Type.CAR);
         carTest.printType();
 
+        truckTest.passDiagnostics();
+        carTest.passDiagnostics();
 
 
-
+        try {
+            busTest.passDiagnostics();
+        } catch (TransportTypeException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

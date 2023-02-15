@@ -58,6 +58,11 @@ public class Car extends Transport <DriverCategoryB> {
     }
 
     @Override
+    public void passDiagnostics() {
+        System.out.println("Пройти диагностику легкового автомобиля");
+    }
+
+    @Override
     public void pitStop() {
         System.out.println("Пит стоп автомобиля "+ getBrand() + " " + getModel());
     }

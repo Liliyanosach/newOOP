@@ -2,13 +2,52 @@ package transport;
 
 public class Bus extends Transport<DriverCategoryD> {
 
-    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver) {
-        super(brand, model, engineCapacity, driver);
+    private final CapacityType capacityType;
+
+    enum CapacityType{
+        EXTRA_SMALL (null,10),
+        SMALL (null,25),
+        MEDIUM (25,50),
+        LARGE (50,80),
+        ESPECIALLY_LARGE(80,120);
+
+        private final Integer lowerLimitsOfCapacity;
+        private final Integer upperLimitsOfCapacity;
+
+        CapacityType(Integer lowerLimitsOfCapacity, Integer upperLimitsOfCapacity){
+            this.lowerLimitsOfCapacity = lowerLimitsOfCapacity;
+            this.upperLimitsOfCapacity = upperLimitsOfCapacity;
+        }
+
+        public Integer getLowerLimitsOfCapacity() {
+            return lowerLimitsOfCapacity;
+        }
+
+        public Integer getUpperLimitsOfCapacity() {
+            return upperLimitsOfCapacity;
+        }
+
+        @Override
+        public String toString() {
+            return "Вместимость: " +
+                    (getLowerLimitsOfCapacity() == null ? "" : "от " + getLowerLimitsOfCapacity() + "") +
+                    (getUpperLimitsOfCapacity() == null ? "" : " до " + getUpperLimitsOfCapacity() + "");
+        }
+    }
+
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, CapacityType capacityType, Type type) {
+        super(brand, model, engineCapacity, driver, type);
+        this.capacityType = capacityType;
+    }
+
+    public CapacityType getCapacityType() {
+        return capacityType;
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return capacityType +
+                " " + super.toString();
     }
 
     @Override
@@ -19,6 +58,20 @@ public class Bus extends Transport<DriverCategoryD> {
     @Override
     public void finishMoving(){
         System.out.println("Автобус марки " + getBrand() + "остановился");
+    }
+
+    @Override
+    public Type getType() {
+        return Type.BUS;
+    }
+
+    @Override
+    public void printType() {
+            if (capacityType != null) {
+                System.out.println("Автобус: " + capacityType);
+            } else {
+                System.out.println("Данных по транспортному средству недостаточно");
+            }
     }
 
     @Override

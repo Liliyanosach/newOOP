@@ -1,7 +1,7 @@
 package transport;
 
 public class CarTest {
-    public static void main(String[] args) throws TransportTypeException {
+    public static void main(String[] args) {
 
 
         Transport<?>[] transports = {
@@ -31,9 +31,14 @@ public class CarTest {
         Car carTest = new Car("Lada", "Granta", 1.7, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SEDAN, Type.CAR);
         carTest.printType();
 
+        try {
+            busTest.passDiagnostics();
+        } catch (TransportTypeException e) {
+            System.out.println("Автобусы диагностику проходить не должны");
+        }
         truckTest.passDiagnostics();
         carTest.passDiagnostics();
-        busTest.passDiagnostics();
+
 
     }
 

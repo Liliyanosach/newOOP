@@ -25,21 +25,23 @@ public class CarTest {
         System.out.println();
 
         Trucks truckTest = new Trucks("Ford", "Bronkas", 3.8, new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4), null, Type.TRUCK);
-        truckTest.printType();
         Bus busTest = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.LARGE, Type.BUS);
-        busTest.printType();
         Car carTest = new Car("Lada", "Granta", 1.7, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SEDAN, Type.CAR);
-        carTest.printType();
 
+
+       checkExceptionPassDiagnostics(truckTest);
+       checkExceptionPassDiagnostics(busTest);
+       checkExceptionPassDiagnostics(carTest);
+
+
+    }
+
+    public static void checkExceptionPassDiagnostics(Transport<?> transport){
         try {
-            busTest.passDiagnostics();
+            transport.passDiagnostics();
         } catch (TransportTypeException e) {
             System.out.println("Автобусы диагностику проходить не должны");
         }
-        truckTest.passDiagnostics();
-        carTest.passDiagnostics();
-
-
     }
 
     public static void printInfo(Transport<?> transport){

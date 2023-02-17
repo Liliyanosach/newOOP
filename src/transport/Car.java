@@ -30,6 +30,7 @@ public class Car extends Transport <DriverCategoryB> {
     public Car(String brand, String model, double engineCapacity, DriverCategoryB driver,BodyType bodyType, Type type) {
         super(brand, model, engineCapacity, driver, type);
         this.bodyType = bodyType;
+
     }
 
     @Override

@@ -35,7 +35,7 @@ public class Bus extends Transport<DriverCategoryD> {
         }
     }
 
-    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, CapacityType capacityType, Type type) {
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, Type type, CapacityType capacityType) {
         super(brand, model, engineCapacity, driver, type);
         this.capacityType = capacityType;
     }
@@ -75,7 +75,7 @@ public class Bus extends Transport<DriverCategoryD> {
     }
 
     @Override
-    public void passDiagnostics() throws TransportTypeException {
+    public boolean passDiagnostics() throws TransportTypeException {
         throw new TransportTypeException("Автобусы диагностику проходить не должны");
     }
 

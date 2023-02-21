@@ -33,7 +33,7 @@ public class Trucks extends Transport<DriverCategoryC> {
         }
     }
 
-    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, LoadCapacity loadCapacity, Type type) {
+    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, Type type, LoadCapacity loadCapacity) {
         super(brand, model, engineCapacity, driver, type);
         this.loadCapacity = loadCapacity;
     }
@@ -73,8 +73,9 @@ public class Trucks extends Transport<DriverCategoryC> {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         System.out.println("Пройти диагностику грузового автомобиля");
+        return true;
     }
 
     @Override

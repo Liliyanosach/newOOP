@@ -1,37 +1,57 @@
 package transport;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CarTest {
     public static void main(String[] args) {
+        Car car1  = new Car("Kia", "RIO", 3.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Type.CAR, Car.BodyType.SEDAN);
+        Bus bus1 = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Type.BUS, Bus.CapacityType.LARGE);
+        Trucks truck1 = new Trucks("Ford", "Bronkas", 3.8,new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4),Type.TRUCK,Trucks.LoadCapacity.N2);
+
+        Mechanic m1 = new Mechanic("Иванов Иван", "Транс");
+        Mechanic m2 = new Mechanic("Петров Петр", "СТО");
+        Mechanic m3 = new Mechanic("Семенов Семен", "Крот");
+        car1.mechanics.add(m1);
+        car1.mechanics.add(m3);
+        bus1.mechanics.add(m1);
+        truck1.mechanics.add(m2);
 
 
-        Transport<?>[] transports = {
-                new Car("Lada", "Granta", 1.7, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SEDAN, Type.CAR),
-                new Car("Audi", "A8", 3.0, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.HATCHBACK, Type.CAR),
-                new Car("BMW", "Z8", 3, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.PICKUP, Type.CAR),
-                new Car("Kia", "Sportage", 2.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SUV, Type.CAR),
-                new Bus("Mersedes", "B151", 5, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.ESPECIALLY_LARGE, Type.BUS),
-                new Bus("Scania", "E360", 5.5, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.MEDIUM, Type.BUS),
-                new Bus("Lias", "R10", 4.8, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.EXTRA_SMALL, Type.BUS),
-                new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.LARGE, Type.BUS),
-                new Trucks("Ford", "Bronkas", 3.8, new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4), Trucks.LoadCapacity.N1, Type.TRUCK),
-                new Trucks("Dodge", "Ram", 4.5, new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4), Trucks.LoadCapacity.N2, Type.TRUCK),
-                new Trucks("Ford", "Raptor", 5, new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4), Trucks.LoadCapacity.N3, Type.TRUCK),
-                new Trucks("JMS", "North", 3.5,new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4),Trucks.LoadCapacity.N1,Type.TRUCK)};
+        List<Transport<?>> participatingCar = new ArrayList<>();
+        participatingCar.add(truck1);
+        participatingCar.add(bus1);
+        participatingCar.add(car1);
 
-        for (Transport<?> transport : transports) {
-            System.out.println(transport);
+        System.out.println(car1);
+        System.out.println(bus1);
+        System.out.println(truck1);
+
+        m1.fixTheCar();
+        m2.carryOutMaintenance();
+
+        car1.transportHaveMechanic();
+        bus1.transportHaveMechanic();
+        truck1.transportHaveMechanic();
+
+
+        car1.nameDriverTransport();
+        bus1.nameDriverTransport();
+        truck1.nameDriverTransport();
+
+
+        ServiceStation serviceStation = new ServiceStation<>();
+        for(Transport ts: participatingCar) {
+            try {
+                serviceStation.addToQueue(ts);
+            } catch (TransportTypeException e) {
+                System.out.println("Автобусы диагностику проходить не должны");
+            }
         }
+        System.out.println("Очередь на обслуживание: "+ serviceStation);
 
-        System.out.println();
-
-        Trucks truckTest = new Trucks("Ford", "Bronkas", 3.8, new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4), null, Type.TRUCK);
-        Bus busTest = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Bus.CapacityType.LARGE, Type.BUS);
-        Car carTest = new Car("Lada", "Granta", 1.7, new DriverCategoryB("Иванов Иван Викторович", true, 5), Car.BodyType.SEDAN, Type.CAR);
-
-
-       checkExceptionPassDiagnostics(truckTest);
-       checkExceptionPassDiagnostics(busTest);
-       checkExceptionPassDiagnostics(carTest);
+        for(int i = 0; i < participatingCar.size();i++)
+            serviceStation.makeDiagnostic();
 
 
     }

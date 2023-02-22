@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Car extends Transport <DriverCategoryB> {
 
     private final BodyType bodyType;
@@ -27,10 +29,9 @@ public class Car extends Transport <DriverCategoryB> {
 
     }
 
-    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver,BodyType bodyType, Type type) {
-        super(brand, model, engineCapacity, driver, type);
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver, Type type, BodyType bodyType, List<Mechanic> mechanics) {
+        super(brand, model, engineCapacity, driver, type,mechanics);
         this.bodyType = bodyType;
-
     }
 
     @Override
@@ -59,8 +60,9 @@ public class Car extends Transport <DriverCategoryB> {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         System.out.println("Пройти диагностику легкового автомобиля");
+        return true;
     }
 
     @Override

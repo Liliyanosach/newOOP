@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Trucks extends Transport<DriverCategoryC> {
 
     private final LoadCapacity loadCapacity;
@@ -33,8 +35,8 @@ public class Trucks extends Transport<DriverCategoryC> {
         }
     }
 
-    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, LoadCapacity loadCapacity, Type type) {
-        super(brand, model, engineCapacity, driver, type);
+    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, Type type, LoadCapacity loadCapacity, List<Mechanic> mechanics) {
+        super(brand, model, engineCapacity, driver, type, mechanics);
         this.loadCapacity = loadCapacity;
     }
 
@@ -73,8 +75,9 @@ public class Trucks extends Transport<DriverCategoryC> {
     }
 
     @Override
-    public void passDiagnostics() {
+    public boolean passDiagnostics() {
         System.out.println("Пройти диагностику грузового автомобиля");
+        return true;
     }
 
     @Override

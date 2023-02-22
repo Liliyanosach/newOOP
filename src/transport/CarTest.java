@@ -9,7 +9,7 @@ import java.util.Set;
 public class CarTest {
     public static void main(String[] args) {
 
-        List<Mechanic> mechanics = new ArrayList<>();
+        Set<Mechanic> mechanics = new HashSet<>();
         Mechanic m1 = new Mechanic("Иванов Иван", "Транс");
         Mechanic m2 = new Mechanic("Петров Петр", "СТО");
         Mechanic m3 = new Mechanic("Семенов Семен", "Крот");
@@ -18,6 +18,7 @@ public class CarTest {
         mechanics.add(m1);
         mechanics.add(m2);
         mechanics.add(m3);
+        mechanics.add(m4);
 
         Car car1  = new Car("Kia", "RIO", 3.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Type.CAR, Car.BodyType.SEDAN,mechanics);
         Bus bus1 = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Type.BUS, Bus.CapacityType.LARGE, mechanics);
@@ -58,20 +59,6 @@ public class CarTest {
 
         for(int i = 0; i < participatingCar.size();i++)
             serviceStation.makeDiagnostic();
-
-
-        /*
-        * Создайте множество водителей, чтобы в случае добавления одного и того же водителя в базу два раза, в консоль выводилась информация без повторов.
-         */
-        Set<Mechanic> mechanicSet = new HashSet<>();
-        mechanicSet.add(m1);
-        mechanicSet.add(m2);
-        mechanicSet.add(m3);
-        mechanicSet.add(m4);
-
-        System.out.println(mechanicSet);
-
-
 
     }
 

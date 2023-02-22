@@ -1,6 +1,7 @@
 package transport;
 
 import java.util.List;
+import java.util.Set;
 
 public class Car extends Transport <DriverCategoryB> {
 
@@ -29,7 +30,7 @@ public class Car extends Transport <DriverCategoryB> {
 
     }
 
-    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver, Type type, BodyType bodyType, List<Mechanic> mechanics) {
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver, Type type, BodyType bodyType, Set<Mechanic> mechanics) {
         super(brand, model, engineCapacity, driver, type,mechanics);
         this.bodyType = bodyType;
     }

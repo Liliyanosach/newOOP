@@ -1,7 +1,9 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class CarTest {
@@ -57,6 +59,17 @@ public class CarTest {
         for(int i = 0; i < participatingCar.size();i++)
             serviceStation.makeDiagnostic();
 
+
+        /*
+        * Создайте множество водителей, чтобы в случае добавления одного и того же водителя в базу два раза, в консоль выводилась информация без повторов.
+         */
+        Set<Mechanic> mechanicSet = new HashSet<>();
+        mechanicSet.add(m1);
+        mechanicSet.add(m2);
+        mechanicSet.add(m3);
+        mechanicSet.add(m4);
+
+        System.out.println(mechanicSet);
 
 
 

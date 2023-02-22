@@ -11,7 +11,7 @@ abstract class Transport <T extends Driver> implements Competing {
     private double engineCapacity;
     private T driver;
     private final Type type;
-    Set<Mechanic> mechanics = new HashSet<>();
+    private Set<Mechanic> mechanics = new HashSet<>();
 
     public Transport(String brand, String model, double engineCapacity, T driver, Type type, Set<Mechanic> mechanics) {
         this.brand = brand;

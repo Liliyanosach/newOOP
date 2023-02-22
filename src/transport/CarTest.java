@@ -3,19 +3,23 @@ package transport;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class CarTest {
     public static void main(String[] args) {
-        Car car1  = new Car("Kia", "RIO", 3.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Type.CAR, Car.BodyType.SEDAN);
-        Bus bus1 = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Type.BUS, Bus.CapacityType.LARGE);
-        Trucks truck1 = new Trucks("Ford", "Bronkas", 3.8,new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4),Type.TRUCK,Trucks.LoadCapacity.N2);
 
+        List<Mechanic> mechanics = new ArrayList<>();
         Mechanic m1 = new Mechanic("Иванов Иван", "Транс");
         Mechanic m2 = new Mechanic("Петров Петр", "СТО");
         Mechanic m3 = new Mechanic("Семенов Семен", "Крот");
-        car1.mechanics.add(m1);
-        car1.mechanics.add(m3);
-        bus1.mechanics.add(m1);
-        truck1.mechanics.add(m2);
+        Mechanic m4 = new Mechanic("Семенов Семен", "Крот");
+
+        mechanics.add(m1);
+        mechanics.add(m2);
+        mechanics.add(m3);
+
+        Car car1  = new Car("Kia", "RIO", 3.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Type.CAR, Car.BodyType.SEDAN,mechanics);
+        Bus bus1 = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Type.BUS, Bus.CapacityType.LARGE, mechanics);
+        Trucks truck1 = new Trucks("Ford", "Bronkas", 3.8,new DriverCategoryC("Мошкин Виктор Сергеевич", true, 4),Type.TRUCK,Trucks.LoadCapacity.N2, mechanics);
 
 
         List<Transport<?>> participatingCar = new ArrayList<>();
@@ -40,7 +44,7 @@ public class CarTest {
         truck1.nameDriverTransport();
 
 
-        ServiceStation serviceStation = new ServiceStation<>();
+        ServiceStation<Transport> serviceStation = new ServiceStation<>();
         for(Transport ts: participatingCar) {
             try {
                 serviceStation.addToQueue(ts);
@@ -52,6 +56,8 @@ public class CarTest {
 
         for(int i = 0; i < participatingCar.size();i++)
             serviceStation.makeDiagnostic();
+
+
 
 
     }

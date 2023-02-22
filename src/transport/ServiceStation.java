@@ -22,7 +22,7 @@ public class ServiceStation <T extends Transport> {
             else
                 System.out.println("что-то пошло не так с " + transport.getModel() + " " + transport.getModel());
         } else
-            System.out.println("Автобусы диагностику не проходят! "+transport.getBrand()+" "+transport.getModel());
+            System.out.println("Автобусы диагностику не проходят! " + transport.getBrand() + " " + transport.getModel());
     }
 
     public void makeDiagnostic() {

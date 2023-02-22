@@ -9,14 +9,15 @@ abstract class Transport <T extends Driver> implements Competing {
     private double engineCapacity;
     private T driver;
     private final Type type;
-     List<Mechanic> mechanics = new ArrayList<>();
+    List<Mechanic> mechanics = new ArrayList<>();
 
-    public Transport(String brand, String model, double engineCapacity, T driver, Type type) {
+    public Transport(String brand, String model, double engineCapacity, T driver, Type type, List<Mechanic> mechanics) {
         this.brand = brand;
         this.model = model;
         this.engineCapacity = engineCapacity;
         this.driver = driver;
         this.type = type;
+        this.mechanics = mechanics;
     }
 
     public T getDriver() {

@@ -1,5 +1,7 @@
 package transport;
 
+import java.util.List;
+
 public class Bus extends Transport<DriverCategoryD> {
 
     private final CapacityType capacityType;
@@ -35,8 +37,8 @@ public class Bus extends Transport<DriverCategoryD> {
         }
     }
 
-    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, Type type, CapacityType capacityType) {
-        super(brand, model, engineCapacity, driver, type);
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, Type type, CapacityType capacityType, List<Mechanic> mechanics) {
+        super(brand, model, engineCapacity, driver, type, mechanics);
         this.capacityType = capacityType;
     }
 

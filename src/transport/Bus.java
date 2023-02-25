@@ -38,7 +38,7 @@ public class Bus extends Transport<DriverCategoryD> {
         }
     }
 
-    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, Type type, CapacityType capacityType, Set<Mechanic> mechanics) {
+    public Bus(String brand, String model, double engineCapacity, DriverCategoryD driver, Type type, CapacityType capacityType, List<Mechanic> mechanics) {
         super(brand, model, engineCapacity, driver, type, mechanics);
         this.capacityType = capacityType;
     }

@@ -30,7 +30,7 @@ public class Car extends Transport <DriverCategoryB> {
 
     }
 
-    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver, Type type, BodyType bodyType, Set<Mechanic> mechanics) {
+    public Car(String brand, String model, double engineCapacity, DriverCategoryB driver, Type type, BodyType bodyType, List<Mechanic> mechanics) {
         super(brand, model, engineCapacity, driver, type,mechanics);
         this.bodyType = bodyType;
     }

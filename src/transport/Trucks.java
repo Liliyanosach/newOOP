@@ -36,7 +36,7 @@ public class Trucks extends Transport<DriverCategoryC> {
         }
     }
 
-    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, Type type, LoadCapacity loadCapacity, Set<Mechanic> mechanics) {
+    public Trucks(String brand, String model, double engineCapacity, DriverCategoryC driver, Type type, LoadCapacity loadCapacity, List<Mechanic> mechanics) {
         super(brand, model, engineCapacity, driver, type, mechanics);
         this.loadCapacity = loadCapacity;
     }

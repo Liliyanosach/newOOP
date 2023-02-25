@@ -9,7 +9,7 @@ import java.util.Set;
 public class CarTest {
     public static void main(String[] args) {
 
-        Set<Mechanic> mechanics = new HashSet<>();
+        List<Mechanic> mechanics = new ArrayList<>();
         Mechanic m1 = new Mechanic("Иванов Иван", "Транс");
         Mechanic m2 = new Mechanic("Петров Петр", "СТО");
         Mechanic m3 = new Mechanic("Семенов Семен", "Крот");
@@ -47,8 +47,8 @@ public class CarTest {
         truck1.nameDriverTransport();
 
 
-        ServiceStation<Transport> serviceStation = new ServiceStation<>();
-        for(Transport ts: participatingCar) {
+        ServiceStation<Transport<?>> serviceStation = new ServiceStation<>();
+        for(Transport<?> ts: participatingCar) {
             try {
                 serviceStation.addToQueue(ts);
             } catch (TransportTypeException e) {
@@ -59,6 +59,17 @@ public class CarTest {
 
         for(int i = 0; i < participatingCar.size();i++)
             serviceStation.makeDiagnostic();
+
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(new DriverCategoryD("Мошкин Семен Иванович", true,4));
+        drivers.add(new DriverCategoryD("Мошкин Семен Иванович", true,4));
+        drivers.add(new DriverCategoryB("Сорока  Петр Иванович", true, 5));
+        drivers.add(new DriverCategoryB("Сорока  Петр Иванович", true, 5));
+        drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
+        drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
+        System.out.println(drivers);
+
+
 
     }
 

@@ -11,9 +11,9 @@ abstract class Transport <T extends Driver> implements Competing {
     private double engineCapacity;
     private T driver;
     private final Type type;
-    private Set<Mechanic> mechanics = new HashSet<>();
+    private List<Mechanic> mechanics = new ArrayList<>();
 
-    public Transport(String brand, String model, double engineCapacity, T driver, Type type, Set<Mechanic> mechanics) {
+    public Transport(String brand, String model, double engineCapacity, T driver, Type type, List<Mechanic> mechanics) {
         this.brand = brand;
         this.model = model;
         this.engineCapacity = engineCapacity;
@@ -38,11 +38,11 @@ abstract class Transport <T extends Driver> implements Competing {
         return model;
     }
 
-    public Set<Mechanic> getMechanics() {
+    public List<Mechanic> getMechanics() {
         return mechanics;
     }
 
-    public void setMechanics(Set<Mechanic> mechanics) {
+    public void setMechanics(List<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
 

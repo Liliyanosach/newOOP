@@ -71,6 +71,18 @@ public class CarTest {
         }
 
 
+        /*
+        * Добавьте HashMap, которая в качестве ключа будет принимать автомобиль, а в качестве значения — список механиков, который его обслуживает.
+         */
+        Map<Car, List<Mechanic>> hashMap = new HashMap<>();
+        hashMap.put(car1,mechanics);
+        hashMap.put(new Car("Lada", "Granta", 2,new DriverCategoryB("Ivan Ivanov", true,5), Type.CAR, Car.BodyType.SUV, mechanics), mechanics);
+        hashMap.put(new Car("Lada", "Granta", 2,new DriverCategoryB("Ivan Ivanov", true,5), Type.CAR, Car.BodyType.SUV, mechanics), mechanics);
+
+        for (Map.Entry<Car, List<Mechanic>> b : hashMap.entrySet()) {
+            System.out.println("Транспорт " + b.getKey() + " , механики " + b.getValue());
+        };
+
 
     }
 

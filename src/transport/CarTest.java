@@ -71,6 +71,18 @@ public class CarTest {
         }
 
 
+        /*
+        * Добавьте HashMap, которая в качестве ключа будет принимать автомобиль, а в качестве значения — список механиков, который его обслуживает.
+         */
+        Map<Transport<?>, List<Mechanic>> hashMap = new HashMap<>();
+        hashMap.put(car1,mechanics);
+        hashMap.put(bus1,mechanics);
+        hashMap.put(truck1,mechanics);
+        hashMap.put(truck1,mechanics);
+        for (Map.Entry<Transport<?>, List<Mechanic>> b : hashMap.entrySet()) {
+            System.out.println("Транспорт " + b.getKey() + " , механики " + b.getValue());
+        };
+
 
     }
 

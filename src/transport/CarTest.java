@@ -1,9 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 public class CarTest {
@@ -67,7 +64,11 @@ public class CarTest {
         drivers.add(new DriverCategoryB("Сорока  Петр Иванович", true, 5));
         drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
         drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
-        System.out.println(drivers);
+
+        Iterator<Driver>iterator = drivers.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
 
 
 

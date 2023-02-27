@@ -1,7 +1,6 @@
 package transport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class CarTest {
@@ -16,6 +15,7 @@ public class CarTest {
         mechanics.add(m1);
         mechanics.add(m2);
         mechanics.add(m3);
+        mechanics.add(m4);
 
         Car car1  = new Car("Kia", "RIO", 3.4, new DriverCategoryB("Иванов Иван Викторович", true, 5), Type.CAR, Car.BodyType.SEDAN,mechanics);
         Bus bus1 = new Bus("Reno", "Sts", 5.2, new DriverCategoryD("Петров Дмитрий Викторович", true, 6), Type.BUS, Bus.CapacityType.LARGE, mechanics);
@@ -44,8 +44,8 @@ public class CarTest {
         truck1.nameDriverTransport();
 
 
-        ServiceStation<Transport> serviceStation = new ServiceStation<>();
-        for(Transport ts: participatingCar) {
+        ServiceStation<Transport<?>> serviceStation = new ServiceStation<>();
+        for(Transport<?> ts: participatingCar) {
             try {
                 serviceStation.addToQueue(ts);
             } catch (TransportTypeException e) {
@@ -57,6 +57,18 @@ public class CarTest {
         for(int i = 0; i < participatingCar.size();i++)
             serviceStation.makeDiagnostic();
 
+        Set<Driver> drivers = new HashSet<>();
+        drivers.add(new DriverCategoryD("Мошкин Семен Иванович", true,4));
+        drivers.add(new DriverCategoryD("Мошкин Семен Иванович", true,4));
+        drivers.add(new DriverCategoryB("Сорока  Петр Иванович", true, 5));
+        drivers.add(new DriverCategoryB("Сорока  Петр Иванович", true, 5));
+        drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
+        drivers.add(new DriverCategoryC("Петров Дмитрий Викторович",true,6));
+
+        Iterator<Driver>iterator = drivers.iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
 
 
 

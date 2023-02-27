@@ -1,7 +1,9 @@
 package transport;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 abstract class Transport <T extends Driver> implements Competing {
     private final String brand;
@@ -9,7 +11,7 @@ abstract class Transport <T extends Driver> implements Competing {
     private double engineCapacity;
     private T driver;
     private final Type type;
-    List<Mechanic> mechanics = new ArrayList<>();
+    private List<Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineCapacity, T driver, Type type, List<Mechanic> mechanics) {
         this.brand = brand;
